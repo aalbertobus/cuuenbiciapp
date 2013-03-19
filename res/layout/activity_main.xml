@@ -9,6 +9,15 @@
         android:layout_width="89dp"
         android:layout_height="64dp"
         android:layout_x="38dp"
-        android:layout_y="16dp" />
+        android:layout_y="16dp"
+        android:hint="Welcome" />
+
+    <TextView
+        android:id="@+id/txtlocation"
+        android:layout_width="261dp"
+        android:layout_height="85dp"
+        android:layout_x="38dp"
+        android:layout_y="110dp"
+        android:hint="Location" />
 
 </AbsoluteLayout>
