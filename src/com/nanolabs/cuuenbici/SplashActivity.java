@@ -44,7 +44,8 @@ public class SplashActivity extends Activity {
 		super.onPause();
 		finish();
 	}
-        
+	
+
     	
 
     

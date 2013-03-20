@@ -77,8 +77,7 @@ public class mainActivity extends Activity {
 								@Override
 								public void onClick(View v) {
 									Intent nextLayout = new Intent(getApplicationContext(),searchRides.class);
-									startActivity(nextLayout);
-									
+									startActivity(nextLayout);	
 								}
 							});
 		                	
@@ -86,15 +85,10 @@ public class mainActivity extends Activity {
 								
 								@Override
 								public void onClick(View v) {
-									// log out form facebook
-									
+									// log out form facebook	
 								}
 							});
 		                	
-		                	
-		                	
-		                    
-		        
 		                } 
 		              }          
 		            });
