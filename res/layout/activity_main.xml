@@ -1,23 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
 <AbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:facebook="http://schemas.android.com/apk/res-auto"
     android:id="@+id/AbsoluteLayout1"
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
+    
+    <Button
+        android:id="@+id/searchrideButton"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_x="2dp"
+        android:layout_y="228dp"
+        android:text="Buscar Paseos"
+        android:textSize="20dp" />
+
+    <Button
+        android:id="@+id/paseobutton"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_x="2dp"
+        android:layout_y="148dp"
+        android:text="Iniciar Paseo"
+        android:textSize="20dp" />
 
     <TextView
-        android:id="@+id/welcome"
-        android:layout_width="89dp"
-        android:layout_height="64dp"
-        android:layout_x="38dp"
-        android:layout_y="16dp"
-        android:hint="Welcome" />
+        android:id="@+id/userLabel"
+        android:layout_width="140dp"
+        android:layout_height="86dp"
+        android:layout_x="28dp"
+        android:layout_y="32dp"
+        android:hint="Welcome"
+        android:textSize="18dp"
+        android:textStyle="bold|italic|normal" />
 
-    <TextView
-        android:id="@+id/txtlocation"
-        android:layout_width="261dp"
-        android:layout_height="85dp"
-        android:layout_x="38dp"
-        android:layout_y="110dp"
-        android:hint="Location" />
+    <com.facebook.widget.ProfilePictureView
+        android:id="@+id/selection_profile_pic"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:layout_x="178dp"
+        android:layout_y="15dp"
+        android:gravity="center_horizontal"
+        facebook:preset_size="small" >
+    </com.facebook.widget.ProfilePictureView>
 
+    <Button
+        android:id="@+id/logoutbutton"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_x="3dp"
+        android:layout_y="308dp"
+        android:text="Cerrar Sesión"
+        android:textSize="20dp" />
+    
 </AbsoluteLayout>
