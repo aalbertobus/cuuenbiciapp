@@ -7,6 +7,8 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
@@ -69,16 +71,16 @@ public class rideMap extends FragmentActivity {
 			public void onLocationChanged(Location arg0) {
 				
 				lat_ = arg0.getLatitude();
-		    	long_ = arg0.getLongitude();
-		    	
+		    	long_ = arg0.getLongitude();	    	
 		    	 mylocation = new LatLng(lat_, long_);
+		    	 mylocationcurrent.setPosition(mylocation);	
 		    	 
-		    	 mylocationcurrent.setPosition(mylocation);		    	 
-		    	
-		    	
+		    	//Move the camera instantly to hamburg with a zoom of 15.
+		    	 map.moveCamera(CameraUpdateFactory.newLatLngZoom(mylocation, 18));
+
+		    	 // Zoom in, animating the camera.
+		    	 map.animateCamera(CameraUpdateFactory.zoomTo(18), 2000, null); 
 		    	 
-			
-				
 			}
 			
 			
