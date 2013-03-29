@@ -8,6 +8,7 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 
+
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
@@ -25,7 +26,8 @@ public class rideMap extends FragmentActivity {
 	LatLng mylocation;
 	Marker mylocationstart;
 	Marker mylocationcurrent;
-	
+	String url;
+	httpHandler handler =  new httpHandler();
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +35,10 @@ public class rideMap extends FragmentActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.map_ride);
 		
+		
+		
+		url = "http://10.0.1.39:8080";
+		 
 		map = ((SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map)).getMap();
 		//setting normal type map
 		map.setMapType(GoogleMap.MAP_TYPE_NORMAL);
@@ -70,16 +76,26 @@ public class rideMap extends FragmentActivity {
 			@Override
 			public void onLocationChanged(Location arg0) {
 				
+				
+				
 				lat_ = arg0.getLatitude();
-		    	long_ = arg0.getLongitude();	    	
+		    	long_ = arg0.getLongitude();
+		    	
+		    	
+		    	
+		    	handler.post(url,Double.toString(lat_),Double.toString(long_));
+		    	 
+		    	 
+		    	
 		    	 mylocation = new LatLng(lat_, long_);
 		    	 mylocationcurrent.setPosition(mylocation);	
 		    	 
 		    	//Move the camera instantly to hamburg with a zoom of 15.
-		    	 map.moveCamera(CameraUpdateFactory.newLatLngZoom(mylocation, 18));
+		    	 //map.moveCamera(CameraUpdateFactory.newLatLngZoom(mylocation, 18));
 
 		    	 // Zoom in, animating the camera.
-		    	 map.animateCamera(CameraUpdateFactory.zoomTo(18), 2000, null); 
+		    	 //map.animateCamera(CameraUpdateFactory.zoomTo(18), 2000, null); 
+		    	 
 		    	 
 			}
 			
