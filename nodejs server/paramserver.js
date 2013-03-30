@@ -19,10 +19,11 @@ http.createServer(function(request,response){
 			
 			
 			response.writeHead(200,{'Content-Type':'text/plain'});
-			response.write(qs.stringify(POST));
+			
 			response.end();
 			
-			console.log("POST: " + qs.stringify(POST) +  "  SENDED");	
+			
+			console.log("POST: " + qs.stringify(POST) );	
 			
 		});
 	}

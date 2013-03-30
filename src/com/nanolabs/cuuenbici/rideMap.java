@@ -28,6 +28,7 @@ public class rideMap extends FragmentActivity {
 	Marker mylocationcurrent;
 	String url;
 	httpHandler handler =  new httpHandler();
+	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -81,22 +82,16 @@ public class rideMap extends FragmentActivity {
 				lat_ = arg0.getLatitude();
 		    	long_ = arg0.getLongitude();
 		    	
-		    	
-		    	
-		    	handler.post(url,Double.toString(lat_),Double.toString(long_));
-		    	 
-		    	 
-		    	
 		    	 mylocation = new LatLng(lat_, long_);
 		    	 mylocationcurrent.setPosition(mylocation);	
 		    	 
 		    	//Move the camera instantly to hamburg with a zoom of 15.
-		    	 //map.moveCamera(CameraUpdateFactory.newLatLngZoom(mylocation, 18));
+		    	 map.moveCamera(CameraUpdateFactory.newLatLngZoom(mylocation, 18));
 
 		    	 // Zoom in, animating the camera.
-		    	 //map.animateCamera(CameraUpdateFactory.zoomTo(18), 2000, null); 
+		    	 map.animateCamera(CameraUpdateFactory.zoomTo(18), 2000, null); 
 		    	 
-		    	 
+		    	 handler.post(url,Double.toString(lat_),Double.toString(long_));
 			}
 			
 			
