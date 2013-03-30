@@ -12,6 +12,7 @@ import android.view.Gravity;
 import android.widget.TextView;
 
 
+import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
@@ -42,12 +43,16 @@ public class rideMap extends FragmentActivity {
 		//setting normal type map
 		map.setMapType(GoogleMap.MAP_TYPE_NORMAL);
 		
+		//setting default camera zoom
+		  CameraUpdate zoom=CameraUpdateFactory.zoomTo(18);
+		  map.animateCamera(zoom);
+		
 		// Add a marker at start point.	it have random lat and long values but it doesn´t affect	  
 		  mylocationcurrent = map.addMarker(new MarkerOptions()
-		  	.position(new LatLng(28.641787,-106.076431))
+		  	.position(new LatLng(28.641787,-106.076431))  //chihuahua mexico as the default location
 		     .title("Punto Actual")
 		     .snippet("Este es tu punto actual"));
-		
+		  	
 		// Acquire a reference to the system Location Manager
 		LocationManager locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
 		
@@ -82,12 +87,10 @@ public class rideMap extends FragmentActivity {
 		    	 mylocation = new LatLng(lat_, long_);
 		    	 mylocationcurrent.setPosition(mylocation);	
 		    	 
-		    	//Move the camera instantly to current location
-		    	 map.moveCamera(CameraUpdateFactory.newLatLngZoom(mylocation, 18));
-
-		    	 // Zoom in, animating the camera.
-		    	 map.animateCamera(CameraUpdateFactory.zoomTo(18), 2000, null); 
-		    	 
+		    	 //to move the camera to current location
+		    	 CameraUpdate center= CameraUpdateFactory.newLatLng(new LatLng(lat_,long_));
+		         map.moveCamera(center);
+		    		   
 		    	//sending http request + lat & long params to server and getting response to checkHttp string
 			     String checkHttp = handler.post(url,Double.toString(lat_),Double.toString(long_));
 			     
