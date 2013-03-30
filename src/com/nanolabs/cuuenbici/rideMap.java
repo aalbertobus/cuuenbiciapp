@@ -1,12 +1,15 @@
 package com.nanolabs.cuuenbici;
 
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.view.Gravity;
+import android.widget.TextView;
 
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -85,13 +88,21 @@ public class rideMap extends FragmentActivity {
 		    	 // Zoom in, animating the camera.
 		    	 map.animateCamera(CameraUpdateFactory.zoomTo(18), 2000, null); 
 		    	 
-		    	//sending http request + lat & long params to server
-			     handler.post(url,Double.toString(lat_),Double.toString(long_));
+		    	//sending http request + lat & long params to server and getting response to checkHttp string
+			     String checkHttp = handler.post(url,Double.toString(lat_),Double.toString(long_));
+			     
+			     //check if http was received for the server
+			     //if server responds with OK, server receive http else Fail receiving 
+			     if(checkHttp.equals("OK")){
+			    	 System.out.println("Received by SERVER");
+			     } else {
+			    	 System.out.println("Can't Find Server");
+			     }    
 			}
 		};
 		
 		// Register the listener with the Location Manager to receive location updates
-		locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, locationlistener);
+		//locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, locationlistener);
 		locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationlistener);	
 	}
 }

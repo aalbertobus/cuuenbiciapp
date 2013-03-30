@@ -16,7 +16,7 @@ public class httpHandler {
 
 //post url dice a que direccion se va a postear
 	
-	public void post(String posturl,String lat_,String long_){
+	public String post(String posturl,String lat_,String long_){
 		try {
 			HttpClient httpclient = new DefaultHttpClient();
 			HttpPost httppost = new HttpPost(posturl);
@@ -29,15 +29,14 @@ public class httpHandler {
 			
 			httpclient.execute(httppost); //This line send the http request to server
 			
-			/*
+			
 			HttpResponse resp = httpclient.execute(httppost); //gets response from server
 			HttpEntity ent = resp.getEntity();
-			String text = EntityUtils.toString(ent);	
-			*/
-			
+			String text = EntityUtils.toString(ent);  	
+			return text;
 		} catch (Exception e) {
-			System.out.println("http POST fail");
-			
+			String text = "http POST fail";
+			return text;
 		}
 	}
 
