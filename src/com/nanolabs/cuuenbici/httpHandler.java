@@ -27,14 +27,13 @@ public class httpHandler {
 			params.add(new BasicNameValuePair("long", lat_));
 			httppost.setEntity(new UrlEncodedFormEntity(params));
 			
-			 httpclient.execute(httppost);
+			httpclient.execute(httppost); //This line send the http request to server
 			
-			//HttpResponse resp = httpclient.execute(httppost); //obtiene respuesta de server
-			//HttpEntity ent = resp.getEntity();
-			
-			//String text = EntityUtils.toString(ent);
-			
-			
+			/*
+			HttpResponse resp = httpclient.execute(httppost); //gets response from server
+			HttpEntity ent = resp.getEntity();
+			String text = EntityUtils.toString(ent);	
+			*/
 			
 		} catch (Exception e) {
 			System.out.println("http POST fail");

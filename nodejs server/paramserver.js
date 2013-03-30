@@ -22,8 +22,8 @@ http.createServer(function(request,response){
 			
 			response.end();
 			
-			
-			console.log("POST: " + qs.stringify(POST) );	
+			console.log("Received");
+			//console.log("POST: " + qs.stringify(POST) );	
 			
 		});
 	}

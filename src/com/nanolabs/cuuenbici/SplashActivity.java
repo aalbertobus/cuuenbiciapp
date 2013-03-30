@@ -11,7 +11,6 @@ import android.view.WindowManager;
 
 
 public class SplashActivity extends Activity {
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,11 +29,10 @@ public class SplashActivity extends Activity {
 				} finally {
 					Intent mainWindow = new Intent(getApplicationContext(),mainActivity.class);
 					startActivity(mainWindow);	
-				}
-        		
+				}	
         	}
         };
-        
+    
         timer.start();
     }
 
@@ -43,10 +41,5 @@ public class SplashActivity extends Activity {
 		// TODO Auto-generated method stub
 		super.onPause();
 		finish();
-	}
-	
-
-    	
-
-    
+	}    
 }

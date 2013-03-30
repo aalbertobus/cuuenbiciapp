@@ -9,10 +9,6 @@ public class searchRides extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.rides_search);
-		
-		
+		setContentView(R.layout.rides_search);	
 	}
-	
-
 }
