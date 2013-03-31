@@ -17,6 +17,7 @@ public class httpHandler {
 //post url dice a que direccion se va a postear
 	
 	public String post(String posturl,String lat_,String long_){
+		
 		try {
 			HttpClient httpclient = new DefaultHttpClient();
 			HttpPost httppost = new HttpPost(posturl);
@@ -41,3 +42,5 @@ public class httpHandler {
 	}
 
 }
+
+

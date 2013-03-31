@@ -31,9 +31,10 @@ public class rideMap extends FragmentActivity {
 	LatLng mylocation;
 	Marker mylocationstart;
 	Marker mylocationcurrent;
-	String url = "http://10.0.1.39:8080"; 
+	String url = "http://10.0.1.39:8080/track"; 
 	httpHandler handler;
 	Toast toastAlert ;
+	
 
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -41,7 +42,6 @@ public class rideMap extends FragmentActivity {
 		setContentView(R.layout.map_ride);
 		
 		toastAlert = Toast.makeText( this  , "" , Toast.LENGTH_LONG );
-		
 		
 		if(CheckEnableGPS()){  
 			//check gps , if gps enabled load map;
@@ -63,7 +63,7 @@ public class rideMap extends FragmentActivity {
 			System.out.println("GPS DETECTED");
 			return true;
 		}else{
-			//if gps is unactive show alert and send to network settings
+			//if gps is disabled show alert and send to network settings
 			System.out.println("NO GPS");
 			return false;
 		}
