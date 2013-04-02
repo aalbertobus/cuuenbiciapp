@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <style type="text/css">
+      html { height: 100% }
+      body { height: 100%; margin: 2; padding: 0 }
+      #map-canvas { height: 100%; width:75%; left:25%; }
+    </style>
+    <script type="text/javascript"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCz-hMm_MI9z-cwW9RN111IX-C3DSruIMM&sensor=false">
+    </script>
+    <script type="text/javascript">
+      function initialize() {
+		var cuubiciLatlng = new google.maps.LatLng(28.646607,-106.069672);
+        var mapOptions = {
+          center: cuubiciLatlng,
+          zoom: 17,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+
+		var marker = new google.maps.Marker({
+			animation: google.maps.Animation.DROP,
+	    	position: cuubiciLatlng,
+	    	title:"CUU EN BICI"	
+		});
+
+        var map = new google.maps.Map(document.getElementById("map-canvas"),mapOptions);
+			// To add the marker to the map, call setMap();
+			marker.setMap(map);			
+      }
+
+google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
+
+<script src="/socket.io/socket.io.js"></script>
+<script>
+
+  var socket = io.connect('http://localhost:8124/');
+
+  socket.on('connect', function() {
+    socket.emit('addme', prompt('Quien Eres?'));  //sends username
+  });
+
+	 socket.on('chat',function(username, data) {
+		alert(username + " " + data);
+    });
+
+	socket.on('pos',function(lat,long){
+		alert("lat = " + lat + " long = " + long);
+	});
+	</script>
+  </head>
+  <body>
+	<div id="map-canvas"/>
+  </body>
+</html>

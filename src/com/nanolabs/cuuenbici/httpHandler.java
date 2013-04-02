@@ -12,6 +12,8 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 
+import android.util.Log;
+
 public class httpHandler {
 
 //post url dice a que direccion se va a postear
@@ -24,16 +26,16 @@ public class httpHandler {
 			
 			//add params
 			List<BasicNameValuePair> params = new ArrayList<BasicNameValuePair>();
-			params.add(new BasicNameValuePair("lat", long_));
-			params.add(new BasicNameValuePair("long", lat_));
+			params.add(new BasicNameValuePair("lat", lat_));
+			params.add(new BasicNameValuePair("long", long_));
 			httppost.setEntity(new UrlEncodedFormEntity(params));
 			
 			httpclient.execute(httppost); //This line send the http request to server
-			
-			
+		
 			HttpResponse resp = httpclient.execute(httppost); //gets response from server
 			HttpEntity ent = resp.getEntity();
-			String text = EntityUtils.toString(ent);  	
+			String text = EntityUtils.toString(ent);  
+			//resp.getEntity().consumeContent();
 			return text;
 		} catch (Exception e) {
 			String text = "http POST fail";
